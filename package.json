@@ -1,0 +1,22 @@
+{
+  "name": "graphiql-auth",
+  "version": "0.2.1",
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "dependencies": {
+    "graphiql": "latest",
+    "graphql": "latest",
+    "http-server": "latest",
+    "isomorphic-fetch": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "scripts": {
+    "serve": "http-server ./build -p 3000 --cors",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
