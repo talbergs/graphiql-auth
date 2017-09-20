@@ -29,8 +29,13 @@ class App extends Component {
       url: parameters.url || 'http://localhost',
       token: parameters.token || '',
       query: parameters.query || '{}',
-      variables: parameters.variables || '{}'
+      variables: parameters.variables || '{}',
+      popup: false,
     };
+  }
+
+  onPopupChange({target: {checked}}) {
+    this.setState({popup: checked});
   }
 
   onEditQuery(newQuery) {
@@ -62,13 +67,14 @@ class App extends Component {
   }
 
   fetcherFactory(url, token) {
+    var popup = this.state.popup
     return function graphQLFetcher(graphQLParams) {
       return fetch(url, {
         method: 'post',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          'Authorization': token,
         },
         mode: 'no-cors',
         body: JSON.stringify(graphQLParams),
@@ -76,9 +82,18 @@ class App extends Component {
       .then(response => response.text())
       .then(text => {
         if (text.substr(0, 1) != '{') {
-          window.open('about:blank', '', '_blank').document.write(text)
+          if (popup) {
+            try {
+              window.open('about:blank', '', '_blank').document.write(text)
+            } catch (e) {
+              return {
+                msg: 'browser is blocking the popup',
+                debug: text,
+              }
+            }
+          }
           return {
-            debug: true
+            debug: text
           }
         }
         return JSON.parse(text)
@@ -90,6 +105,9 @@ class App extends Component {
     return (
       <div className="app">
         <div className="header">
+          <label>popup
+            <input type="checkbox" onChange={this.onPopupChange.bind(this)} checked={this.state.popup}/>
+          </label>
           <label>url
             <input type="text" id="url-input" onChange={this.onUrlChange.bind(this)} value={this.state.url}/>
           </label>
