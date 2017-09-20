@@ -63,13 +63,14 @@ class App extends Component {
 
   fetcherFactory(url, token) {
     return function graphQLFetcher(graphQLParams) {
-      return fetch(url + '/graphql', {
+      return fetch(url, {
         method: 'post',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
+        mode: 'no-cors',
         body: JSON.stringify(graphQLParams),
       })
       .then(response => response.text())
