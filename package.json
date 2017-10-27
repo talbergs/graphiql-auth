@@ -10,13 +10,17 @@
     "http-server": "latest",
     "isomorphic-fetch": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "snyk": "^1.46.0"
   },
   "scripts": {
     "serve": "http-server ./build -p 3000 --cors",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "eject": "react-scripts eject",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
