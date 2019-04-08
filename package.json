@@ -5,7 +5,7 @@
     "react-scripts": "latest"
   },
   "dependencies": {
-    "graphiql": "latest",
+    "graphiql": "0.11.11",
     "graphql": "latest",
     "http-server": "latest",
     "isomorphic-fetch": "latest",
