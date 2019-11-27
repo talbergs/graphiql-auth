@@ -7,7 +7,7 @@
   "dependencies": {
     "graphiql": "0.11.11",
     "graphql": "latest",
-    "http-server": "latest",
+    "http-server": "0.12.0",
     "isomorphic-fetch": "latest",
     "react": "latest",
     "react-dom": "latest",
