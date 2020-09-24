@@ -8,9 +8,9 @@
     "graphiql": "0.11.11",
     "graphql": "latest",
     "http-server": "latest",
-    "isomorphic-fetch": "latest",
-    "react": "latest",
-    "react-dom": "latest",
+    "isomorphic-fetch": "3.0.0",
+    "react": "16.5.0",
+    "react-dom": "16.5.0",
     "snyk": "^1.46.0"
   },
   "scripts": {
